@@ -8,7 +8,7 @@ const Header = () => {
 					<img
 						src='/mediumLogo.png'
 						alt='Logo'
-						className='w-44 object-contain cursor-pointer'
+						className='w-24 md:w-44 object-contain cursor-pointer'
 					/>
 				</Link>
 				<div className='hidden md:inline-flex items-center space-x-5'>
@@ -19,9 +19,9 @@ const Header = () => {
 					</p>
 				</div>
 			</div>
-			<div className='flex items-center space-x-5 text-green-600'>
+			<div className='flex items-center text-sm space-x-3 md:space-x-5 text-green-600'>
 				<h3>Sign In</h3>
-				<h3 className='border px-4 rounded-full border-green-400 py-1'>
+				<h3 className='border px-2 md:px-4 rounded-full border-green-400 py-1'>
 					Get Started
 				</h3>
 			</div>
