@@ -4,12 +4,14 @@ import { sanityClient, urlFor } from '../../sanity';
 import { Post } from '../../typing';
 import PortableText from 'react-portable-text';
 import Comment from '../../components/Comment';
+import CommentContainer from '../../components/CommentContainer';
 
 interface Props {
 	post: Post;
 }
 
 const Post = ({ post }: Props) => {
+	console.log(post);
 	return (
 		<>
 			<Header />
@@ -59,11 +61,8 @@ const Post = ({ post }: Props) => {
 										{...props}
 									/>
 								),
-								span: (props: any) => (
-									<h2
-										className='text-1xl font-bold my-5'
-										{...props}
-									/>
+								normal: (props: any) => (
+									<p className='text-1xl my-5' {...props} />
 								),
 								blockquote: (props: any) => (
 									<p
@@ -76,7 +75,23 @@ const Post = ({ post }: Props) => {
 					</div>
 					<hr className='max-w-lg my-5 mx-auto border border-yellow-500' />
 				</article>
+
 				<Comment post={post._id} />
+
+				<div className='flex flex-col max-w-2xl my-5 mx-auto shadow shadow-yellow-400 space-y-2'>
+					<h3 className='text-4xl p-4'>Comments</h3>
+					<hr className='p-2' />
+					{post.comments.length > 0 ? (
+						post.comments.map((comment) => (
+							<CommentContainer
+								key={comment._id}
+								comment={comment}
+							/>
+						))
+					) : (
+						<p>Be the first to comment</p>
+					)}
+				</div>
 			</main>
 		</>
 	);
@@ -116,12 +131,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   name,
   image
 },
+ "comments":*[
+   _type == "comment" &&
+   post._ref == ^._id &&
+   approved==true
+ ],
 description,
 mainImage,
 slug,
  body,
 }
  `;
+
 	const post = await sanityClient.fetch(query, {
 		slug: params?.slug,
 	});

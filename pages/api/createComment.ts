@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import sanityClient from '@sanity/client';
-import { json } from 'stream/consumers';
 
 export const config = {
 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
