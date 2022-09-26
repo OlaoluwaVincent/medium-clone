@@ -6,6 +6,7 @@
 .pnp.js
 
 /medium-app-clone/node_modules
+/medium-app-clone/dist
 
 # testing
 /coverage
