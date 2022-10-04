@@ -1,5 +1,4 @@
 import { GetStaticProps } from 'next';
-import Header from '../../components/Header';
 import { sanityClient, urlFor } from '../../sanity';
 import { Post } from '../../typing';
 import PortableText from 'react-portable-text';
@@ -14,12 +13,11 @@ const Post = ({ post }: Props) => {
 	console.log(post);
 	return (
 		<>
-			<Header />
 			<main>
 				<img
 					src={urlFor(post.mainImage).url()!}
 					alt={post.description}
-					className='w-full h-40 object-cover'
+					className='w-full h-40 object-cover pt-[85px]'
 				/>
 
 				<article className='max-w-3xl mx-auto p-5'>

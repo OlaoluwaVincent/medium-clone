@@ -34,3 +34,10 @@ export interface Comment {
 	_type: string;
 	_updatedAt: string;
 }
+
+export interface Button {
+	text: string;
+	icon?: any;
+	type?: 'submit' | 'button';
+	className?: string;
+}
